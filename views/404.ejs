@@ -1,0 +1,249 @@
+<div class="error-page">
+    <div class="glitch-wrapper">
+        <div class="glitch-text" data-text="404">404</div>
+    </div>
+    <div class="row justify-content-center align-items-center min-vh-100">
+        <div class="col-md-6 text-center">
+            <div class="error-content">
+                <h2 class="h4 mb-3 text-white glitch-subtitle" data-text="Página não encontrada">Página não encontrada</h2>
+                <p class="text-secondary mb-4 error-message">A página que você está procurando não existe ou foi movida.</p>
+                <a href="/" class="btn btn-primary px-4 py-3 error-button">
+                    <span class="btn-content">
+                        <i class="fas fa-home me-2"></i>
+                        <span>Voltar para o início</span>
+                    </span>
+                    <div class="btn-glitch"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="error-grid"></div>
+</div>
+
+<style>
+    .error-page {
+        position: relative;
+        overflow: hidden;
+        background: var(--dark-bg);
+        min-height: 100vh;
+    }
+
+    .error-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            linear-gradient(rgba(99, 102, 241, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(99, 102, 241, 0.05) 1px, transparent 1px);
+        background-size: 30px 30px;
+        z-index: 0;
+        animation: gridMove 20s linear infinite;
+        opacity: 0.5;
+    }
+
+    .error-content {
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .glitch-wrapper {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+    }
+
+    .glitch-text {
+        font-size: 15rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        opacity: 0.1;
+        position: relative;
+        animation: glitch 5s infinite;
+        text-shadow: 
+            2px 2px var(--primary-hover),
+            -2px -2px rgba(255, 0, 0, 0.5);
+    }
+
+    .glitch-text::before,
+    .glitch-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .glitch-text::before {
+        left: 2px;
+        text-shadow: -2px 0 red;
+        animation: glitch-1 2s infinite linear alternate-reverse;
+    }
+
+    .glitch-text::after {
+        left: -2px;
+        text-shadow: 2px 0 blue;
+        animation: glitch-2 3s infinite linear alternate-reverse;
+    }
+
+    .glitch-subtitle {
+        position: relative;
+        display: inline-block;
+    }
+
+    .glitch-subtitle::before,
+    .glitch-subtitle::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
+
+    .glitch-subtitle::before {
+        left: 2px;
+        color: #ff0000;
+        clip: rect(24px, 550px, 90px, 0);
+        animation: glitch-anim-2 3s infinite linear alternate-reverse;
+    }
+
+    .glitch-subtitle::after {
+        left: -2px;
+        color: #0000ff;
+        clip: rect(85px, 550px, 140px, 0);
+        animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+    }
+
+    .error-message {
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+
+    .error-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .btn-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-glitch {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(45deg, 
+            transparent 20%, 
+            rgba(99, 102, 241, 0.1) 20%, 
+            rgba(99, 102, 241, 0.1) 40%,
+            transparent 40%, 
+            transparent 60%, 
+            rgba(99, 102, 241, 0.1) 60%, 
+            rgba(99, 102, 241, 0.1) 80%,
+            transparent 80%
+        );
+        animation: glitch-button 4s linear infinite;
+    }
+
+    .error-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    @keyframes gridMove {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            transform: translateY(30px);
+        }
+    }
+
+    @keyframes glitch {
+        0%, 100% {
+            transform: translate(0);
+        }
+        20% {
+            transform: translate(-2px, 2px);
+        }
+        40% {
+            transform: translate(-2px, -2px);
+        }
+        60% {
+            transform: translate(2px, 2px);
+        }
+        80% {
+            transform: translate(2px, -2px);
+        }
+    }
+
+    @keyframes glitch-1 {
+        0% {
+            clip: rect(132px, 350px, 101px, 30px);
+        }
+        100% {
+            clip: rect(49px, 350px, 88px, 30px);
+        }
+    }
+
+    @keyframes glitch-2 {
+        0% {
+            clip: rect(65px, 350px, 119px, 30px);
+        }
+        100% {
+            clip: rect(79px, 350px, 86px, 30px);
+        }
+    }
+
+    @keyframes glitch-anim-1 {
+        0% {
+            clip: rect(24px, 550px, 90px, 0);
+        }
+        100% {
+            clip: rect(85px, 550px, 140px, 0);
+        }
+    }
+
+    @keyframes glitch-anim-2 {
+        0% {
+            clip: rect(85px, 550px, 140px, 0);
+        }
+        100% {
+            clip: rect(24px, 550px, 90px, 0);
+        }
+    }
+
+    @keyframes glitch-button {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style> 
